@@ -1,5 +1,7 @@
 package entidades;
 
-public class Division {
+public interface Division  {
+
+	void dividirGasto(); //retorna un calculo, puede ser una coleccion de saldos. A chequear
 
 }

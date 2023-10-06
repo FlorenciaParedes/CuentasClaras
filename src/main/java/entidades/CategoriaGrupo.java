@@ -22,5 +22,7 @@ public class CategoriaGrupo {
 		this.imagen = imagen;
 	}
 		
-	
+    public CategoriaGrupo altaCategoriaGrupo(String nombre, Imagen imagen) {
+    	return null;
+    }
 }

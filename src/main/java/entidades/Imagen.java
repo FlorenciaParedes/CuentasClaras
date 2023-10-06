@@ -23,7 +23,9 @@ public class Imagen {
 		this.path = path;
 	}
 		
-	
+	 public Imagen altaImagen(long id, String nombre, String path) {
+		 return null;
+	 }
 }
 
 

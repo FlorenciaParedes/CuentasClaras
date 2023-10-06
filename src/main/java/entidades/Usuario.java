@@ -13,7 +13,9 @@ public class Usuario {
 	
 	private List<Usuario> amigos;
 	private List<Grupo> grupos;
-	//private List<Gasto> gastos; 
+	private List<Saldo> saldos; 
+	private List<Gasto> gastos; 
+
 	
 	//geters y seters
 	public long getId() {
@@ -59,6 +61,23 @@ public class Usuario {
 	public void setContraseña(String contraseña) {
 		this.contraseña = contraseña;
 	}
+	
+	public List<Saldo> getSaldos() {
+		return saldos;
+	}
+
+	public void setSaldos(List<Saldo> saldos) {
+		this.saldos = saldos;
+	}
+	
+	public List<Gasto> getGastos() {
+		return gastos;
+	}
+
+	public void setGastos(List<Gasto> gastos) {
+		this.gastos = gastos;
+	}
+
 
 	// metodos
 	
@@ -80,9 +99,11 @@ public class Usuario {
 		return amigos;
 	}
 	
-	public double verSaldoTotal() {
+	public float verSaldoTotal() {
 		//Calcula el saldo total.
 		return 0;
 	}
-	
+
+
+
 }

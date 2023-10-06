@@ -22,6 +22,9 @@ public class CategoriaGasto {
 		this.imagen = imagen;
 	}
 		
-	
+    public CategoriaGasto altaCategoriaGasto(String nombre, Imagen imagen) {
+    	return null;
+    }
+
 }
 

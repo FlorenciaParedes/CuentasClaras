@@ -7,7 +7,8 @@ public class Grupo {
 	private String nombre; 
 	private CategoriaGrupo categoria; 
 	private List<Gasto> gastos; 
-	private List<Usuario> usuarios;
+	private List<Usuario> integrantes;
+	private Imagen imagen;
 		
 	public long getId() {
 		return id;
@@ -28,7 +29,18 @@ public class Grupo {
 	public void setCategoria(CategoriaGrupo categoria) {
 		this.categoria = categoria;
 	}
+	public Imagen getImagen() {
+		return imagen;
+	}
 
+	public void setImagen(Imagen imagen) {
+		this.imagen = imagen;
+	}
+	//metodos
+	public void altaGrupo (String nombre, List<Usuario> integrantes) {
+		
+	}
+	
 	public void agregarMiembro(Usuario usuario) {
 		
 	}
@@ -37,9 +49,11 @@ public class Grupo {
 		
 	}
 	public List<Usuario> verMiembros() {
-		return usuarios;
+		return integrantes;
 	}
 	public List<Gasto> verGastos() {
 		return gastos;
 	}
+
+
 }
