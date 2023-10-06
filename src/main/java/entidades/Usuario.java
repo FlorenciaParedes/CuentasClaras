@@ -5,16 +5,16 @@ import java.util.List;
 
 public class Usuario {
 	private long id;
-	private String nombre; 
 	private String nombreUsuario; 
+	private String nombre; 
 	private String apellido; 
 	private String email;
 	private String contraseña;
 	
+	
 	private List<Usuario> amigos;
 	private List<Grupo> grupos;
 	private List<Saldo> saldos; 
-	private List<Gasto> gastos; 
 
 	
 	//geters y seters
@@ -70,13 +70,6 @@ public class Usuario {
 		this.saldos = saldos;
 	}
 	
-	public List<Gasto> getGastos() {
-		return gastos;
-	}
-
-	public void setGastos(List<Gasto> gastos) {
-		this.gastos = gastos;
-	}
 
 
 	// metodos
@@ -85,9 +78,9 @@ public class Usuario {
 		// Da de alta un usuario 
 	public void registrarGrupo (String nombre, List<Usuario> usuarios, CategoriaGrupo categoria) {}
 		// llama al constructor de grupo y lo guarda en la base
-	public void registrarGasto(String nombre, Date fecha,Imagen imagen, CategoriaGasto categoria, List<Usuario> usuarios,double monto,Division division) {}
+	public void registrarGasto(String nombre, Date fecha,byte imagen, CategoriaGasto categoria, List<Usuario> usuarios,double monto,Division division) {}
 		// llama al constructor de gasto con un usuario en particular o con un grupo y lo guarda en la base
-	public void realizarPago(Saldo saldo){}
+	public void registrarPago(Saldo saldo){}
 		// llama al metodo de saldo que registra el pago.
 	public void invitarUsuarioAGrupo(Grupo grupo,Usuario usuario){}
 		// llama al metodo de grupo que agega un usuario a la lista de integrantes
@@ -99,11 +92,14 @@ public class Usuario {
 		return amigos;
 	}
 	
-	public float verSaldoTotal() {
+	public float calcularSaldoTotal() {
 		//Calcula el saldo total.
 		return 0;
 	}
+	public void iniciarSesion(String email,String contraseña) {}
 
+	public void agregarAmigo(Usuario amigo) {}// agrega un usuario a la lista de amigos
+	public void registrarSaldo(Saldo saldo) {} //agega a la lista de saldos
 
 
 }

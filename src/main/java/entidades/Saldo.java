@@ -3,12 +3,12 @@ package entidades;
 public class Saldo {
 	private long id;
 	private float debe; 
-	
+	private boolean pagado ;
+
 	private Usuario usuarioOrigen; 
 	private Usuario usuarioDestino;
 	
 	private Gasto consumo;
-	private boolean pagado ;
 	
 	
 	public float getDebe() {
@@ -46,6 +46,6 @@ public class Saldo {
 	
 	 public void registrarSaldo(float debe, Usuario usuarioOrigen, Usuario usuarioDestino, Gasto consumo) {}
 	 
-	 public void registrarPago() {}
+	 public void registrarPago() {} // marca como pagado
 
 }

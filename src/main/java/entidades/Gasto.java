@@ -6,18 +6,17 @@ import java.util.List;
 public class Gasto {
 	private long id;
 	private String nombre; 
-	private String fecha;
+	private Date fecha;
 	private float monto; 
-
+	private byte imagen;
+	
 	private CategoriaGasto categoria;
-	private Imagen imagen;
 	
 	private Usuario usuarioOrigen;
-	private Division division;
 	private List<Usuario> integrantes; //lista de usuarios, que puede ser un usuario individuales o miembros de un grupo (todos o menos)
 
-	//private List<Saldo> saldos;  para mi no es necesario
-		
+	private Division division;
+	
 	
 	public long getId() {
 		return id;
@@ -43,16 +42,16 @@ public class Gasto {
 	public void setMonto(float monto) {
 		this.monto = monto;
 	}
-	public String getFecha() {
+	public Date getFecha() {
 		return fecha;
 	}
-	public void setFecha(String fecha) {
+	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
-	public Imagen getImagen() {
+	public byte getImagen() {
 		return imagen;
 	}
-	public void setImagen(Imagen imagen) {
+	public void setImagen(byte imagen) {
 		this.imagen = imagen;
 	}
 	public List<Usuario> getIntegrantes() {
@@ -75,11 +74,11 @@ public class Gasto {
 	}
 
 	// metodos
-	public Gasto altaGasto(String nombre, Date fecha, Imagen imagen, Usuario usuarioOrigen, CategoriaGasto categoria, List<Usuario> integrantes, float monto, Division division) {
+	public Gasto altaGasto(String nombre, Date fecha, byte imagen, Usuario usuarioOrigen, CategoriaGasto categoria, List<Usuario> integrantes, float monto, Division division) {
 	    return null; 
 	}
 	
-	public void editarGasto(Gasto gasto, float nuevoMonto, Date nuevaFecha, Imagen nuevaImagen, Usuario nuevoIntegrante, Division nuevaFormaDivisión) {
+	public void editarGasto(Gasto gasto, float nuevoMonto, Date nuevaFecha, byte nuevaImagen, Usuario nuevoIntegrante, Division nuevaFormaDivisión) {
 	    // Actualiza los atributos del gasto Gasto con los nuevos valores proporcionados
 	}
 	
