@@ -1,5 +1,6 @@
 package entidades;
 
+import java.util.Date;
 import java.util.List;
 
 public class Usuario {
@@ -12,10 +13,9 @@ public class Usuario {
 	
 	private List<Usuario> amigos;
 	private List<Grupo> grupos;
-	private List<Gasto> gastos; 
+	//private List<Gasto> gastos; 
 	
-	
-	
+	//geters y seters
 	public long getId() {
 		return id;
 	}
@@ -60,12 +60,18 @@ public class Usuario {
 		this.contraseña = contraseña;
 	}
 
+	// metodos
+	
+	public void altaUsuario(String nombreUsuario,String nombre, String apellido, String email,String contraseña) {}
+		// Da de alta un usuario 
+	public void registrarGrupo (String nombre, List<Usuario> usuarios, CategoriaGrupo categoria) {}
+		// llama al constructor de grupo y lo guarda en la base
+	public void registrarGasto(String nombre, Date fecha,Imagen imagen, CategoriaGasto categoria, List<Usuario> usuarios,double monto,Division division) {}
+		// llama al constructor de gasto con un usuario en particular o con un grupo y lo guarda en la base
+	public void realizarPago(Saldo saldo){}
+		// llama al metodo de saldo que registra el pago.
 	public void invitarUsuarioAGrupo(Grupo grupo,Usuario usuario){}
-	
-	public void cargarGasto(Gasto gasto) {}
-	
-	public void realizarPago(Pago pago){}
-	
+		// llama al metodo de grupo que agega un usuario a la lista de integrantes
 	public List<Grupo> verGrupos(){ 
 		return grupos;
 	}
@@ -75,6 +81,7 @@ public class Usuario {
 	}
 	
 	public double verSaldoTotal() {
+		//Calcula el saldo total.
 		return 0;
 	}
 	
