@@ -1,20 +1,34 @@
 package entidades;
 
-import java.util.Date;
+//import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EntityManager;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import inicio.Factory;
+@Entity
+@Table(name="usuario")
 public class Usuario {
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
+	@Column
 	private String nombreUsuario; 
-	private String nombre; 
-	private String apellido; 
-	private String email;
-	private String contraseña;
+	//private String nombre; 
+	//private String apellido; 
+	//private String email;
+	//private String contraseña;
 	
-	
-	private List<Usuario> amigos;
-	private List<Grupo> grupos;
-	private List<Saldo> saldos; 
+
+//	private List<Usuario> amigos;
+	//private List<Grupo> grupos;
+	//private List<Saldo> saldos; 
 
 	
 	//geters y seters
@@ -22,14 +36,25 @@ public class Usuario {
 		return id;
 	}
 
-	public String getNombre() {
+	public Usuario() {
+	
+	}
+	
+    public Usuario(long id, String nombreUsuario) {
+		super();
+		this.id = id;
+		this.nombreUsuario = nombreUsuario;
+		
+	}
+
+/*	public String getNombre() {
 		return nombre;
 	}
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
+*/
 	public String getNombreUsuario() {
 		return nombreUsuario;
 	}
@@ -38,7 +63,7 @@ public class Usuario {
 		this.nombreUsuario = nombreUsuario;
 	}
 
-	public String getApellido() {
+	/*public String getApellido() {
 		return apellido;
 	}
 
@@ -101,5 +126,8 @@ public class Usuario {
 	public void agregarAmigo(Usuario amigo) {}// agrega un usuario a la lista de amigos
 	public void registrarSaldo(Saldo saldo) {} //agega a la lista de saldos
 
-
+*/
+	
+	
+	
 }
