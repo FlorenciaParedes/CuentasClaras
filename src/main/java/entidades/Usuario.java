@@ -40,6 +40,11 @@ public class Usuario {
 	
 	}
 	
+	public Usuario(String nombreUsuario) {
+	    super();
+	    this.nombreUsuario = nombreUsuario;
+	}
+	
     public Usuario(long id, String nombreUsuario) {
 		super();
 		this.id = id;

@@ -22,20 +22,28 @@ public class GenericDAOimpl<T> implements GenericDAO<T>{
 
 		@Override
 		public T guardar(T entidad) {
+			//instancia de EntityManager
 			EntityManager em = Factory.getEntityManagerFactory().createEntityManager();
+			//variable para la transacción.
 			EntityTransaction tx = null;
 			try {
-				 tx = em.getTransaction();
+				//obtiene una transaccion 
+				tx = em.getTransaction();
+				// inicia la transaccion
 				 tx.begin();
+				 //persiste la entidad
 				 em.persist(entidad);
+				 //confirma la tx y aplica los cambios en la bd
 				 tx.commit();
 			}
 			catch (RuntimeException e) {
+				//En caso de excepcion verifica si la tx esta activa para hacer rollback
 				 if ( tx != null && tx.isActive() ) 
 					 tx.rollback();
 				 throw e; 
 			}
 			finally {
+				//cierra el entity manager
 				em.close();
 			}
 			return entidad; 
