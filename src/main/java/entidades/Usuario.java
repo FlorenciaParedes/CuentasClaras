@@ -1,17 +1,17 @@
 package entidades;
 
-//import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EntityManager;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.JoinTable;
+import javax.persistence.JoinColumn;
 
-import inicio.Factory;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 @Entity
 @Table(name="usuario")
 public class Usuario {
@@ -20,14 +20,29 @@ public class Usuario {
 	private long id;
 	@Column
 	private String nombreUsuario; 
-	//private String nombre; 
-	//private String apellido; 
-	//private String email;
-	//private String contraseña;
+	 
+	@Column(name = "nombre")
+	 private String nombre;	
+	
+	@Column(name = "apellido")
+    private String apellido;
+	
+	@Column(name = "email")
+    private String email;
+	
+	@Column(name = "contrasena")
+    private String contrasena;
 	
 
 //	private List<Usuario> amigos;
-	//private List<Grupo> grupos;
+	
+	@ManyToMany
+	@JoinTable(
+		name = "usuario_grupo", // Nombre de la tabla intermedia
+		joinColumns = @JoinColumn(name = "usuario_id"), // Define el campo (columna) en la tabla intermedia que se utilizará como clave externa para la entidad Usuario
+	    inverseJoinColumns = @JoinColumn(name = "grupo_id") // Define el campo (columba) en la tabla intermedia que se utilizará como clave externa para la entidad Grupo
+		)
+	private List<Grupo> grupos;
 	//private List<Saldo> saldos; 
 
 	
@@ -38,6 +53,15 @@ public class Usuario {
 
 	public Usuario() {
 	
+	}
+	
+	public Usuario(String nombreUsuario, String nombre, String apellido, String email, String contrasena) {
+	    this.nombreUsuario = nombreUsuario;
+	    this.nombre = nombre;
+	    this.apellido = apellido;
+	    this.email = email;
+	    this.contrasena = contrasena;
+	    //this.grupos.add(grupo);
 	}
 	
 	public Usuario(String nombreUsuario) {

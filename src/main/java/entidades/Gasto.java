@@ -3,19 +3,67 @@ package entidades;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+@Entity
+@Table(name = "gasto")
 public class Gasto {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
+	 
+	@Column
 	private String nombre; 
+	
+	@Column
 	private Date fecha;
+	
+	@Column
 	private float monto; 
+	
+	@Column
 	private byte imagen;
 	
-	private CategoriaGasto categoria;
+/*relacion uno a uno, un gasto pertenece a una sola categoria
+ * @OneToOne	
+ * private CategoriaGasto categoria;
+	*/
+/*
+ * Relación uno a uno: Un gasto está asociado a un único usuario que lo genera.
+ *  @OneToOne	
+ *  private Usuario usuarioOrigen;
+*/
 	
-	private Usuario usuarioOrigen;
-	private List<Usuario> integrantes; //lista de usuarios, que puede ser un usuario individuales o miembros de un grupo (todos o menos)
-
-	private Division division;
+/*
+ * Un gasto puede tener uno o varios integrantes, y un integrante puede pertenecer a 0 o varios gastos.
+ * ver como resolver en este caso
+ * 	@ManyToMany
+ * private List<Usuario> integrantes; //lista de usuarios, que puede ser un usuario individuales o miembros de un grupo (todos o menos)
+*/
+	
+/**
+ * Un gasto tiene una unica división.
+ * @OneToOne
+ * private Division division;
+*/
+	
+	//constructor completo -> resto de paramtros , CategoriaGasto categoria, Usuario usuarioOrigen, List<Usuario> integrantes, Division division
+	public Gasto(String nombre, Date fecha, float monto, byte imagen) {
+	    this.nombre = nombre;
+	    this.fecha = fecha;
+	    this.monto = monto;
+	    this.imagen = imagen;
+	   /* 
+	    * this.categoria = categoria;
+	    * this.usuarioOrigen = usuarioOrigen;
+	    * this.integrantes = integrantes;
+	    * this.division = division;
+	    */
+	}
 	
 	
 	public long getId() {
@@ -30,12 +78,16 @@ public class Gasto {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+
+	/*
 	public CategoriaGasto getCategoria() {
 		return categoria;
 	}
 	public void setCategoria(CategoriaGasto categoria) {
 		this.categoria = categoria;
 	}
+	*/
+	
 	public float getMonto() {
 		return monto;
 	}
@@ -54,7 +106,7 @@ public class Gasto {
 	public void setImagen(byte imagen) {
 		this.imagen = imagen;
 	}
-	public List<Usuario> getIntegrantes() {
+	/*public List<Usuario> getIntegrantes() {
 		return integrantes;
 	}
 	public void setIntegrantes(List<Usuario> integrantes) {
@@ -72,7 +124,7 @@ public class Gasto {
 	public void setDivision(Division division) {
 		this.division = division;
 	}
-
+*/
 	// metodos
 	public Gasto altaGasto(String nombre, Date fecha, byte imagen, Usuario usuarioOrigen, CategoriaGasto categoria, List<Usuario> integrantes, float monto, Division division) {
 	    return null; 
