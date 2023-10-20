@@ -112,5 +112,13 @@ public class GenericDAOimpl<T> implements GenericDAO<T> {
 			em.close();
 		}
 	}
+	
+	@Override
+	public List<T> listar() {
+		Query consulta= Factory.getEntityManagerFactory().createEntityManager().createQuery("select e from "+ persistentClass.getSimpleName()+ " e");
+		return (List<T>)consulta.getResultList();
+	
+	}
+
 
 }
