@@ -13,7 +13,7 @@ public class Main {
 	//Persiste Usuario y Servicio en BD
 	UsuarioDAOimpl uDAO = new UsuarioDAOimpl();
 	System.out.println("LLEGAMOS AL MAIN ANTES DEL GUARDAR");
-	uDAO.guardar(usuario);
+	//uDAO.guardar(usuario);
 	System.out.println("LLEGAMOS AL MAIN LUEGO DEL GUARDAR");
 	
 	//pisa al otro este actualizar, preguntar si asi es la idea!
@@ -23,11 +23,12 @@ public class Main {
 	//uDAO.borrar(usuario2);
 	System.out.println("LLEGAMOS AL MAIN LUEGO DE borrar entidad");
 	
-	//uDAO.guardar(usuario);
-	//	System.out.println("Guardamos a juan de vuelta");
+	uDAO.guardar(usuario2);
 	
-	uDAO.eliminar(1);
+	uDAO.eliminar(uDAO.buscarUsuarioPorMail("pedro@mail.com").getId());
 	System.out.println("LLEGAMOS AL MAIN LUEGO DEL eliminar con id");
+	
+	
 	
 	}
 }
