@@ -1,9 +1,12 @@
 package DAO;
 
-import entidades.Usuario;
+import java.util.List;
+
 
 public interface GenericDAO<T> {
-
+	
+	List<T> listar();
+	
 	public T guardar(T base);
 	
 	T actualizar(T entidad);
@@ -11,5 +14,7 @@ public interface GenericDAO<T> {
     void borrar(T entidad);
 	
 	void eliminar(long id);
+
+
 
 }
