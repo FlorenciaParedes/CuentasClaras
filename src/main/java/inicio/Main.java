@@ -1,6 +1,10 @@
 package inicio;
 
+import java.sql.Date;
+
+import DAOimplements.GastoDAOimpl;
 import DAOimplements.UsuarioDAOimpl;
+import entidades.Gasto;
 import entidades.Grupo;
 import entidades.Usuario;
 
@@ -23,7 +27,7 @@ public class Main {
 	//uDAO.borrar(usuario2);
 	System.out.println("LLEGAMOS AL MAIN LUEGO DE borrar entidad");
 	
-	uDAO.guardar(usuario2);
+	Usuario userDB = uDAO.guardar(usuario2);
 	
 	//uDAO.eliminar(uDAO.buscarUsuarioPorMail("pedro@mail.com").getId());
 	System.out.println("LLEGAMOS AL MAIN LUEGO DEL eliminar con id");
@@ -33,5 +37,13 @@ public class Main {
 	    	System.out.println(user.getNombreUsuario());
 		
 	    }
+	
+	Gasto gasto = new Gasto(usuario2.getNombreUsuario(),2);
+	
+	GastoDAOimpl gDAO= new GastoDAOimpl();
+	
+	gDAO.guardar(gasto); //con la imagen como hacemos para esta entrega?  
+	//con bytes get byte y eso igual lo hacemos a lo ultimo lo de la img no hay apu
+	//la imagen le decimos toda la ruta y la levantamos
 	}
 }

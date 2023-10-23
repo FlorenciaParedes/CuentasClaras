@@ -50,14 +50,14 @@ public class Gasto {
  * @OneToOne
  * private Division division;
 */
-	
+	Date date = new Date();
 	//constructor completo -> resto de paramtros , CategoriaGasto categoria, Usuario usuarioOrigen, List<Usuario> integrantes, Division division
-	public Gasto(String nombre, Date fecha, float monto, byte imagen) {
+	public Gasto(String nombre, float monto) {
 	    this.nombre = nombre;
-	    this.fecha = fecha;
+	    this.fecha =  date; 
 	    this.monto = monto;
-	    this.imagen = imagen;
-	   /* 
+	  /*   this.imagen = imagen;
+	   
 	    * this.categoria = categoria;
 	    * this.usuarioOrigen = usuarioOrigen;
 	    * this.integrantes = integrantes;

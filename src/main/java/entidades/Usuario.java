@@ -156,6 +156,9 @@ public class Usuario {
 	public void registrarSaldo(Saldo saldo) {} //agega a la lista de saldos
 
 */
+	public List<Grupo> getGrupos() {
+		return grupos;
+	}
 	
 	
 	
