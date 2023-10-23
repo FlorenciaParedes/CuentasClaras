@@ -1,5 +1,6 @@
 package entidades;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -9,9 +10,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.JoinColumn;
-
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
+
 @Entity
 @Table(name="usuario")
 public class Usuario {
@@ -34,56 +36,49 @@ public class Usuario {
     private String contrasena;
 	
 
-//	private List<Usuario> amigos;
+	/*@ManyToMany // si dejo esta linea se me rompe en consola
+	private List<Grupo> grupos = new ArrayList<>();
 	
+	*/
 	@ManyToMany
-	@JoinTable(
-		name = "usuario_grupo", // Nombre de la tabla intermedia
-		joinColumns = @JoinColumn(name = "usuario_id"), // Define el campo (columna) en la tabla intermedia que se utilizará como clave externa para la entidad Usuario
-	    inverseJoinColumns = @JoinColumn(name = "grupo_id") // Define el campo (columba) en la tabla intermedia que se utilizará como clave externa para la entidad Grupo
-		)
-	private List<Grupo> grupos;
+    @JoinTable(
+        name = "amigos",
+        joinColumns = @JoinColumn(name = "usuario_id"),
+        inverseJoinColumns = @JoinColumn(name = "amigo_id")
+    )
+    private List<Usuario> amigos= new ArrayList<>();;
+	
 	//private List<Saldo> saldos; 
 
-	
-	//geters y seters
-	public long getId() {
-		return id;
-	}
+	/*Constructores*/
 
 	public Usuario() {
 	
 	}
 	
 	public Usuario(String nombreUsuario, String nombre, String apellido, String email, String contrasena) {
-	    this.nombreUsuario = nombreUsuario;
-	    this.nombre = nombre;
-	    this.apellido = apellido;
-	    this.email = email;
-	    this.contrasena = contrasena;
-	    //this.grupos.add(grupo);
-	}
-	
-	public Usuario(String nombreUsuario) {
-	    super();
-	    this.nombreUsuario = nombreUsuario;
-	}
-	
-    public Usuario(long id, String nombreUsuario) {
-		super();
-		this.id = id;
 		this.nombreUsuario = nombreUsuario;
-		
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.email = email;
+		this.contrasena = contrasena;
+	}
+	
+	
+	/*geters y seters*/
+	public long getId() {
+		return id;
 	}
 
-/*	public String getNombre() {
+
+	public String getNombre() {
 		return nombre;
 	}
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-*/
+
 	public String getNombreUsuario() {
 		return nombreUsuario;
 	}
@@ -92,7 +87,7 @@ public class Usuario {
 		this.nombreUsuario = nombreUsuario;
 	}
 
-	/*public String getApellido() {
+	public String getApellido() {
 		return apellido;
 	}
 
@@ -109,14 +104,25 @@ public class Usuario {
 	}
 
 	public String getContraseña() {
-		return contraseña;
+		return contrasena;
 	}
 
-	public void setContraseña(String contraseña) {
-		this.contraseña = contraseña;
+	public void setContraseña(String contrasena) {
+		this.contrasena = contrasena;
 	}
+
+	/*
+	public List<Grupo> getGrupos() {
+		return grupos;
+	}
+
+	public void setGrupos(List<Grupo> grupos) {
+		this.grupos = grupos;
+	}*/
 	
-	public List<Saldo> getSaldos() {
+	
+/*
+	 public List<Saldo> getSaldos() {
 		return saldos;
 	}
 
@@ -124,23 +130,14 @@ public class Usuario {
 		this.saldos = saldos;
 	}
 	
-
-
-	// metodos
+*/
 	
-	public void altaUsuario(String nombreUsuario,String nombre, String apellido, String email,String contraseña) {}
-		// Da de alta un usuario 
-	public void registrarGrupo (String nombre, List<Usuario> usuarios, CategoriaGrupo categoria) {}
-		// llama al constructor de grupo y lo guarda en la base
+/*
+		
 	public void registrarGasto(String nombre, Date fecha,byte imagen, CategoriaGasto categoria, List<Usuario> usuarios,double monto,Division division) {}
 		// llama al constructor de gasto con un usuario en particular o con un grupo y lo guarda en la base
 	public void registrarPago(Saldo saldo){}
 		// llama al metodo de saldo que registra el pago.
-	public void invitarUsuarioAGrupo(Grupo grupo,Usuario usuario){}
-		// llama al metodo de grupo que agega un usuario a la lista de integrantes
-	public List<Grupo> verGrupos(){ 
-		return grupos;
-	}
 
 	public List<Usuario> verAmigos(){
 		return amigos;
@@ -160,6 +157,13 @@ public class Usuario {
 		return grupos;
 	}
 	
+	
+	/*metodos*/
+	public void agregarAmigo(Usuario amigo) {// agrega un usuario a la lista de amigos
+		this.amigos.add(amigo);
+		
+	}
+
 	
 	
 }
