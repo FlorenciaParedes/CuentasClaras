@@ -50,6 +50,9 @@ public class Usuario {
 	
     @ManyToMany(mappedBy="integrantes")
     private List<Grupo> grupos= new ArrayList<>();
+    
+    @ManyToMany(mappedBy="integrantes")
+    private List<Gasto> gastos= new ArrayList<>();
 	//private List<Saldo> saldos; 
 
 	/*Constructores*/
