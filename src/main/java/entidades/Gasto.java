@@ -124,12 +124,12 @@ public class Gasto {
 	public void setDivision(Division division) {
 		this.division = division;
 	}
-*/
+
 	// metodos
 	public Gasto altaGasto(String nombre, Date fecha, byte imagen, Usuario usuarioOrigen, CategoriaGasto categoria, List<Usuario> integrantes, float monto, Division division) {
 	    return null; 
 	}
-	
+*/	
 	public void editarGasto(Gasto gasto, float nuevoMonto, Date nuevaFecha, byte nuevaImagen, Usuario nuevoIntegrante, Division nuevaFormaDivisión) {
 	    // Actualiza los atributos del gasto Gasto con los nuevos valores proporcionados
 	}

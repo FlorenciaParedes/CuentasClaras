@@ -46,8 +46,10 @@ public class Usuario {
         joinColumns = @JoinColumn(name = "usuario_id"),
         inverseJoinColumns = @JoinColumn(name = "amigo_id")
     )
-    private List<Usuario> amigos= new ArrayList<>();;
+    private List<Usuario> amigos= new ArrayList<>();
 	
+    @ManyToMany(mappedBy="integrantes")
+    private List<Grupo> grupos= new ArrayList<>();
 	//private List<Saldo> saldos; 
 
 	/*Constructores*/
@@ -152,12 +154,12 @@ public class Usuario {
 	public void agregarAmigo(Usuario amigo) {}// agrega un usuario a la lista de amigos
 	public void registrarSaldo(Saldo saldo) {} //agega a la lista de saldos
 
-*/
+
 	public List<Grupo> getGrupos() {
 		return grupos;
 	}
 	
-	
+*/	
 	/*metodos*/
 	public void agregarAmigo(Usuario amigo) {// agrega un usuario a la lista de amigos
 		this.amigos.add(amigo);

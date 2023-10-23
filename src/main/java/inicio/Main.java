@@ -22,13 +22,8 @@ public class Main {
 	Grupo grupo1 = new Grupo("Grupo1", (byte) 1);	//Esta linea daria es para luego relacionar el usuario con un grupo, pero todavia no esta el metodo y la vuelta con los dao.
 	gDAO.guardar(grupo1);
 	
-	/* relacionar grupo y usuario */
-		System.out.println("relacionando grupo");
-	grupo1.agregarIntegrante(usuario);
-	gDAO.actualizar(grupo1);
-	
 	/*Alta categoria grupo*/
-		System.out.println("AltaCategoria");
+	System.out.println("AltaCategoria");
 	CategoriaGrupoDAOimpl cgDAO = new CategoriaGrupoDAOimpl();
 	CategoriaGrupo categoriaGrupo = new CategoriaGrupo("amigos", (byte) 2);
 	cgDAO.guardar(categoriaGrupo);
@@ -36,7 +31,13 @@ public class Main {
 	/*setear categoria al grupo*/
 		System.out.println("SetCategoria");
 	grupo1.setCategoria(categoriaGrupo);
-	//gDAO.actualizar(grupo1); //Cuando actualizo el grupo se duplica la tabla intermedia
+	gDAO.actualizar(grupo1); //Cuando actualizo el grupo se duplica la tabla intermedia
+
+	/* relacionar grupo y usuario */
+		System.out.println("relacionando grupo");
+	grupo1.agregarIntegrante(usuario);
+	gDAO.actualizar(grupo1);
+	
 		
 	/*Modificacion de datos del usuario*/
 		System.out.println("Modificar");
