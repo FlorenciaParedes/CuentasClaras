@@ -1,13 +1,30 @@
 package entidades;
 
-public class Saldo {
-	private long id;
-	private float debe; 
-	private boolean pagado ;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
-	private Usuario usuarioOrigen; 
-	private Usuario usuarioDestino;
+@Entity
+@Table(name="saldo")
+
+public class Saldo {
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private long id;
+	@Column
+	private float debe; 
+	@Column
+	private boolean pagado ;
 	
+	@OneToOne
+	private Usuario usuarioOrigen; 
+	@OneToOne
+	private Usuario usuarioDestino;
+	@OneToOne
 	private Gasto consumo;
 	
 	
