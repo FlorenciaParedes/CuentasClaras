@@ -81,7 +81,6 @@ public class Gasto {
 	    this.imagen = imagen;	   
 	    this.categoria = categoria;
 	    this.usuarioOrigen = usuarioOrigen;
-	    this.integrantes= new ArrayList<>();
 	    //this.division = division;	    
 	}
 	
@@ -150,7 +149,7 @@ public class Gasto {
 	    return null; 
 	}
 */	
-	public void editarGasto(Gasto gasto, float nuevoMonto, Date nuevaFecha, byte nuevaImagen, Usuario nuevoIntegrante, Division nuevaFormaDivisión) {
+	public void editarGasto(Gasto gasto, double nuevoMonto, Date nuevaFecha, byte nuevaImagen, Usuario nuevoIntegrante, Division nuevaFormaDivisión) {
 	    // Actualiza los atributos del gasto Gasto con los nuevos valores proporcionados
 	}
 	
