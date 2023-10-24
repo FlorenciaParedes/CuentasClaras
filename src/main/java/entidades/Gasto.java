@@ -28,7 +28,7 @@ public class Gasto {
 	private Date fecha;
 	
 	@Column
-	private float monto; 
+	private double monto; 
 	
 	@Column
 	private byte imagen;
@@ -74,17 +74,14 @@ public class Gasto {
 */
 	Date date = new Date();
 	//constructor completo -> resto de paramtros , CategoriaGasto categoria, Usuario usuarioOrigen, List<Usuario> integrantes, Division division
-	public Gasto(String nombre, float monto) {
+	public Gasto(String nombre, double monto, CategoriaGasto categoria, Usuario usuarioOrigen, byte imagen) {
 	    this.nombre = nombre;
 	    this.fecha =  date; 
 	    this.monto = monto;
-	  /*   this.imagen = imagen;
-	   
-	    * this.categoria = categoria;
-	    * this.usuarioOrigen = usuarioOrigen;
-	    * this.integrantes = integrantes;
-	    * this.division = division;
-	    */
+	    this.imagen = imagen;	   
+	    this.categoria = categoria;
+	    this.usuarioOrigen = usuarioOrigen;
+	    //this.division = division;	    
 	}
 	
 	
@@ -110,10 +107,10 @@ public class Gasto {
 	}
 	*/
 	
-	public float getMonto() {
+	public double getMonto() {
 		return monto;
 	}
-	public void setMonto(float monto) {
+	public void setMonto(double monto) {
 		this.monto = monto;
 	}
 	public Date getFecha() {
@@ -152,7 +149,7 @@ public class Gasto {
 	    return null; 
 	}
 */	
-	public void editarGasto(Gasto gasto, float nuevoMonto, Date nuevaFecha, byte nuevaImagen, Usuario nuevoIntegrante, Division nuevaFormaDivisión) {
+	public void editarGasto(Gasto gasto, double nuevoMonto, Date nuevaFecha, byte nuevaImagen, Usuario nuevoIntegrante, Division nuevaFormaDivisión) {
 	    // Actualiza los atributos del gasto Gasto con los nuevos valores proporcionados
 	}
 	
