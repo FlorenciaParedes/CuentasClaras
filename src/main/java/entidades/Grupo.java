@@ -37,14 +37,22 @@ public class Grupo {
 		joinColumns = @JoinColumn(name = "grupo_id"), // Define el campo (columna) en la tabla intermedia que se utilizará como clave externa para la entidad Usuario
 	    inverseJoinColumns = @JoinColumn(name = "usuario_id") // Define el campo (columba) en la tabla intermedia que se utilizará como clave externa para la entidad Grupo
 		)	
-	private List<Usuario> integrantes;
+	private List<Usuario> integrantes =new ArrayList<>();
 	
-    public Grupo( String nombre, byte imagen) {
-    	this.integrantes= new ArrayList<>();
+	 public Grupo( String nombre, byte imagen, Usuario PrimerUsuario) {
+	        this.nombre = nombre;
+	        this.imagen = imagen;
+	    	this.integrantes.add(PrimerUsuario);
+
+	    }
+	
+	public Grupo( String nombre, byte imagen) {
 
         this.nombre = nombre;
         this.imagen = imagen;
     }
+    
+    
 	
 	public long getId() {
 		return id;

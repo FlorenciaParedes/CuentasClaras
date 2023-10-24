@@ -25,7 +25,7 @@ public class UsuarioDAOimplServiceTest {
 		uDAO = new UsuarioDAOimpl();
 		usuario1 = new Usuario("Juancito", "Juan", "Pérez", "juan@mail.com", "contrasena2");
         usuario2 = new Usuario("usuario123", "Nombre", "Apellido", "unMail@mail.com", "contrasena123");
-        usuario3 = new Usuario("Anita", "Ana", "García", "maria@mail.com", "contrasena1");
+        usuario3 = new Usuario("Anita", "Ana", "García", "ana@mail.com", "contrasena1");
 
     }
 	
@@ -47,7 +47,6 @@ public class UsuarioDAOimplServiceTest {
 	        
 		  	// Modifico atributos del usuario
 	        usuarioGuardado.setNombreUsuario("Marita");
-
 	        usuarioGuardado.setNombre("María");
 	        usuarioGuardado.setApellido("Pérez");
 	        usuarioGuardado.setEmail("maria.perez@mail.com");
@@ -82,7 +81,7 @@ public class UsuarioDAOimplServiceTest {
 	  }
 	  
 	  @Test
-	    public void testListarUsuariosConTresUsuarios() {
+	    public void testListarUsuarios() {
 		    // Se agregaron 3 usuarios y se borro 1
 	        // La lista tiene 2 usuarios
 	        List<Usuario> ListaDeUsuariosGuardados = uDAO.listar();

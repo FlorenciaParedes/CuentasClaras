@@ -13,6 +13,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import DAOimplements.GrupoDAOimpl;
+import DAOimplements.UsuarioDAOimpl;
+
 
 @Entity
 @Table(name="usuario")
@@ -157,18 +160,43 @@ public class Usuario {
 	public void agregarAmigo(Usuario amigo) {}// agrega un usuario a la lista de amigos
 	public void registrarSaldo(Saldo saldo) {} //agega a la lista de saldos
 
-
-	public List<Grupo> getGrupos() {
-		return grupos;
-	}
+*/
 	
-*/	
+	
+
 	/*metodos*/
 	public void agregarAmigo(Usuario amigo) {// agrega un usuario a la lista de amigos
 		this.amigos.add(amigo);
 		
 	}
 
+	// CategoriaGrupo categoria agregar luego
 	
+	//llama al constructor de grupo y lo guarda en la base
+	public Grupo registrarGrupo (String nombre,byte imagen) {	
+		
+		try {
+			UsuarioDAOimpl uDAO = new UsuarioDAOimpl();	    // Crear una instancia del DAO de Usuario	
+			Grupo grupo1 = new Grupo(nombre, imagen, this); // Crear un objeto Grupo con los datos recibidos y a 'this' (el usuario) para agregarse
+			grupos.add(grupo1);                           // Agregar el grupo a la lista de grupos
+			
+			uDAO.actualizar(this);                       // Actualizar el usuario en la base de datos
+			
+			GrupoDAOimpl gDAO = new GrupoDAOimpl();     // Crear una instancia del DAO de Grupo
+			Grupo grupoGuardado = gDAO.guardar(grupo1);	
+			return grupoGuardado;// Llamar al método 'guardar' del DAO para guardar el grupo en la base de datos		
+		
+		}catch(Exception  e){
+			System.out.println("excepcion?");
+			System.out.println(e);
+			e.printStackTrace();
+			return null;
+		}
+		
 	
+	}
+		
+	public List<Grupo> getGrupos() {
+		return grupos;
+	}
 }
