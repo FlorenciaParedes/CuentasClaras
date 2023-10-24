@@ -71,7 +71,9 @@ public class Main {
 	/*Agregar amigo*/
 	usuario.agregarAmigo(usuario3);
 	uDAO.actualizar(usuario);
-
+	
+	System.out.println(uDAO.buscarUsuarioPorMail("pedro@mail.com"));
+	
 	//Persiste Usuario y Servicio en BD
 
 	//pisa al otro este actualizar, preguntar si asi es la idea!
