@@ -23,9 +23,10 @@ public class UsuarioDAOimplServiceTest {
 	//El setUp se corre antes que los test e inicializa variables que voy a usar en los metodos test.
     public void setUp() {
 		uDAO = new UsuarioDAOimpl();
-        usuario1 = new Usuario("usuario123", "Nombre", "Apellido", "email@example.com", "contrasena123");
-        usuario2 = new Usuario("usuario2", "Juan", "Pérez", "juan@example.com", "contrasena2");
-        usuario3 = new Usuario("usuario1", "María", "García", "maria@example.com", "contrasena1");
+		usuario1 = new Usuario("Juancito", "Juan", "Pérez", "juan@mail.com", "contrasena2");
+        usuario2 = new Usuario("usuario123", "Nombre", "Apellido", "unMail@mail.com", "contrasena123");
+        usuario3 = new Usuario("Anita", "Ana", "García", "maria@mail.com", "contrasena1");
+
     }
 	
 	@Test
@@ -35,8 +36,8 @@ public class UsuarioDAOimplServiceTest {
 
         //testeo:
         Assertions.assertNotNull(usuarioGuardado, "No deberia ser null");
-        Assertions.assertEquals("Nombre", usuarioGuardado.getNombre(),"No deberia ser null");
-        Assertions.assertEquals("email@example.com", usuarioGuardado.getEmail());
+        Assertions.assertEquals("Juan", usuarioGuardado.getNombre(),"No deberia ser null");
+        Assertions.assertEquals("juan@mail.com", usuarioGuardado.getEmail());
 	}
 	
 	  @Test
@@ -45,24 +46,26 @@ public class UsuarioDAOimplServiceTest {
 		  	Usuario usuarioGuardado = uDAO.guardar(usuario2);
 	        
 		  	// Modifico atributos del usuario
+	        usuarioGuardado.setNombreUsuario("Marita");
+
 	        usuarioGuardado.setNombre("María");
 	        usuarioGuardado.setApellido("Pérez");
-	        usuarioGuardado.setEmail("maria.perez@example.com");
+	        usuarioGuardado.setEmail("maria.perez@mail.com");
 	        
 	        // Llamada al metodo que actualiza
 	        Usuario usuarioActualizado = uDAO.actualizar(usuarioGuardado);
 
 	        //testeo:
 	        Assertions.assertNotNull(usuarioActualizado);
+	        Assertions.assertEquals("Marita", usuarioActualizado.getNombreUsuario());
 	        Assertions.assertEquals("María", usuarioActualizado.getNombre());
 	        Assertions.assertEquals("Pérez", usuarioActualizado.getApellido());
-	        Assertions.assertEquals("maria.perez@example.com", usuarioActualizado.getEmail());
+	        Assertions.assertEquals("maria.perez@mail.com", usuarioActualizado.getEmail());
 	        
 	  }
 
 	  @Test
 	  public void testBorrar() {
-			//Usuario u = new Usuario("Anita", "Ana", "Gonzalez", "ana.gonzalez@mail.com", "contrasena123");
 			
 			Usuario usuarioGuardado = uDAO.guardar(usuario3);
 			// aseguro que existe
@@ -88,9 +91,11 @@ public class UsuarioDAOimplServiceTest {
 	        Assertions.assertFalse(ListaDeUsuariosGuardados.isEmpty());
 	        Assertions.assertEquals(2, ListaDeUsuariosGuardados.size());
 	        
-	        System.out.println("** Lista de Usuarios **");
+	        System.out.println("Lista de Usuarios ");
+	        System.out.println("Nombres de usuario: ");
+
 	    	for (Usuario user: uDAO.listar()) { 
-	    		System.out.println(user.getNombreUsuario());
+	    		System.out.println("• "+user.getNombreUsuario());
 	        }
 	  }
 }
