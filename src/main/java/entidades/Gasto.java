@@ -72,6 +72,10 @@ public class Gasto {
  * @OneToOne
  * private Division division;
 */
+	
+	public Gasto() {
+		
+	}
 	Date date = new Date();
 	//constructor completo -> resto de paramtros , CategoriaGasto categoria, Usuario usuarioOrigen, List<Usuario> integrantes, Division division
 	public Gasto(String nombre, double monto, CategoriaGasto categoria, Usuario usuarioOrigen, byte imagen) {
