@@ -191,9 +191,7 @@ public class Usuario {
 			System.out.println(e);
 			e.printStackTrace();
 			return null;
-		}
-		
-	
+		}	
 	}
 		
 	public List<Grupo> getGrupos() {
