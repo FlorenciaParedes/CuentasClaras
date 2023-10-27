@@ -18,7 +18,7 @@ public class GastoDAOimpl extends GenericDAOimpl<Gasto> implements GastoDAO{
 		public Gasto buscarGastoPorNombre(String nombre) {
 			try { 
 				Query consulta = Factory.getEntityManagerFactory().createEntityManager().
-				createQuery("select g from Gasto g where u.nombre =:nombre");
+				createQuery("select g from Gasto g where g.nombre =:nombre");
 				consulta.setParameter("nombre", nombre);
 				return (Gasto)consulta.getSingleResult();
 				
