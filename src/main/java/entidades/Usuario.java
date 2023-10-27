@@ -14,6 +14,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import DAOimplements.CategoriaGastoDAOimpl;
+import DAOimplements.GastoDAOimpl;
 import DAOimplements.GrupoDAOimpl;
 import DAOimplements.UsuarioDAOimpl;
 
@@ -191,6 +193,7 @@ public class Usuario {
 			return null;
 		}	
 	}
+	
 		
 	public List<Grupo> getGrupos() {
 		return grupos;
