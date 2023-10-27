@@ -46,13 +46,12 @@ public class Grupo {
 
 	    }
 	
-	public Grupo( String nombre, byte imagen) {
-
+	public Grupo( String nombre, byte imagen, CategoriaGrupo categoria) {
         this.nombre = nombre;
         this.imagen = imagen;
+        this.categoria = categoria;
     }
-    
-    
+       
 	
 	public long getId() {
 		return id;
