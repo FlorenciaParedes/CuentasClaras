@@ -17,6 +17,8 @@ public class GrupoDAOimplServiceTest {
 	// declaro variables
 	private Grupo grupo1;
 	private Grupo grupo2;
+	private Grupo grupo3;
+
 	private GrupoDAOimpl gDAO;
 	List<Grupo> ListaDeGastosGuardados = null;
 
@@ -32,9 +34,10 @@ public class GrupoDAOimplServiceTest {
 		Usuario usuarioOrigen = new Usuario("flor", "Nombre", "Apellido", "email@example.com", "contrasena123");
 		usuarioDAO.guardar(usuarioOrigen);
 
-		grupo1 = new Grupo("Las Barderas", (byte) 2, categoriaGuardada );
+		grupo1 = new Grupo("Recitalcitos", (byte) 2, categoriaGuardada );
 		grupo2 = new Grupo("Perces Raros", (byte) 2, categoriaGuardada );
-	
+		grupo3 = new Grupo("Facultad", (byte) 2, categoriaGuardada );
+
 	}
 
 	@Test
@@ -43,7 +46,7 @@ public class GrupoDAOimplServiceTest {
 		Grupo grupoGuardado = gDAO.guardar(grupo1);
 		
 		Assertions.assertNotNull(grupoGuardado, "No deberia ser null");
-		Assertions.assertEquals("Las Barderas", grupoGuardado.getNombre(), "No deberia ser null");
+		Assertions.assertEquals("Recitalcitos", grupoGuardado.getNombre());
 		Assertions.assertEquals("comida", grupoGuardado.getCategoria().getNombre());
 
 	}
@@ -66,10 +69,10 @@ public class GrupoDAOimplServiceTest {
 
 	}
 
-/*	@Test
+	@Test
 	public void testBorrar() {
 
-		Grupo grupoGuardado = gDAO.guardar(grupo2);
+		Grupo grupoGuardado = gDAO.guardar(grupo3);
 		// aseguro que existe
 		Assertions.assertNotNull(grupoGuardado);
 
@@ -77,11 +80,11 @@ public class GrupoDAOimplServiceTest {
 		gDAO.borrar(grupoGuardado);
 
 		// Busco al usuario por su email después de borrarlo
-		Grupo grupoBorrado = gDAO.buscarGrupoPorNombre("Tallercito");
+		Grupo grupoBorrado = gDAO.buscarGrupoPorNombre("Facultad");
 
 		// Aseguro que no existe mas
 		Assertions.assertNull(grupoBorrado);
-	}*/
+	}
 
 	@Test
 	public void testListarGrupo() {

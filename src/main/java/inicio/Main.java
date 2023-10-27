@@ -16,17 +16,19 @@ public class Main {
 	Usuario usuario = new Usuario("juan123", "Juan", "P", "juan@mail.com", "contrasena123");
 	uDAO.guardar(usuario);
 	
-	/*Alta grupo*/
-		System.out.println("AltaGrupo");
-	GrupoDAOimpl gDAO = new GrupoDAOimpl();	
-	Grupo grupo1 = new Grupo("Grupo1", (byte) 1);	//Esta linea daria es para luego relacionar el usuario con un grupo, pero todavia no esta el metodo y la vuelta con los dao.
-	gDAO.guardar(grupo1);
-	
 	/*Alta categoria grupo*/
 	System.out.println("AltaCategoria");
 	CategoriaGrupoDAOimpl cgDAO = new CategoriaGrupoDAOimpl();
 	CategoriaGrupo categoriaGrupo = new CategoriaGrupo("amigos", (byte) 2);
 	cgDAO.guardar(categoriaGrupo);
+	
+	
+	/*Alta grupo*/
+		System.out.println("AltaGrupo");
+	GrupoDAOimpl gDAO = new GrupoDAOimpl();	
+	Grupo grupo1 = new Grupo("Grupo1", (byte) 1,categoriaGrupo);	//Esta linea daria es para luego relacionar el usuario con un grupo, pero todavia no esta el metodo y la vuelta con los dao.
+	gDAO.guardar(grupo1);
+	
 	
 	/*setear categoria al grupo*/
 		System.out.println("SetCategoria");

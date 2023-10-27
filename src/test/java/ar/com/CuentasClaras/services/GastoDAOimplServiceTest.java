@@ -50,14 +50,20 @@ public class GastoDAOimplServiceTest {
 	private Gasto gasto1;
 	private Gasto gasto2;
 	private Gasto gasto3;
-	private GastoDAOimpl gDAO;
+	private GastoDAOimpl gDAO = new GastoDAOimpl();
 	List<Gasto> ListaDeGastosGuardados = null;
 
 	@BeforeEach
 	// El setUp se corre antes que los test e inicializa variables que voy a usar en
 	// los metodos test.
 	public void setUp() {
-		gDAO = new GastoDAOimpl();
+	}
+
+	@Test
+	public void testGuardarGastoDAOimpl() {
+		// llamada al metodo que guarda
+		
+		
 
 		CategoriaGastoDAOimpl cgDAO = new CategoriaGastoDAOimpl();
 		CategoriaGasto categoriaGasto = new CategoriaGasto("comida", (byte) 2);
@@ -68,42 +74,61 @@ public class GastoDAOimplServiceTest {
 		Usuario usuarioGuardado = usuarioDAO.guardar(usuarioOrigen);
 
 		gasto1 = new Gasto("dulce de leche", 1200, categoriaGuardada, usuarioGuardado, (byte) 2);
-		gasto2 = new Gasto("vino", 2000, categoriaGuardada, usuarioGuardado, (byte) 2);
 		gasto3 = new Gasto("yerba", 1500, categoriaGuardada, usuarioGuardado, (byte) 2);
 
-	}
-
-	@Test
-	public void testGuardarGastoDAOimpl() {
-		// llamada al metodo que guarda
 		Gasto gastoGuardado = gDAO.guardar(gasto1);
+		
+		Gasto gastoGuardado3= gDAO.guardar(gasto3);
 
 		// testeo:
 		Assertions.assertNotNull(gastoGuardado, "No deberia ser null");
 		Assertions.assertEquals("dulce de leche", gastoGuardado.getNombre(), "No deberia ser null");
 		Assertions.assertEquals(1200, gastoGuardado.getMonto());
 		
-
 	}
 
 	@Test
 	public void testActualizarGastoDAOimpl() {
 		// guardo el gasto.
-		Gasto gastoGuardado = gDAO.guardar(gasto2);
+		CategoriaGastoDAOimpl cgDAO = new CategoriaGastoDAOimpl();
+		CategoriaGasto categoriaGasto = new CategoriaGasto("Recital", (byte) 2);
+		CategoriaGasto categoriaGuardada = cgDAO.guardar(categoriaGasto);
+
+		UsuarioDAOimpl usuarioDAO = new UsuarioDAOimpl();
+		Usuario usuarioOrigen = new Usuario("Cata", "Nombre", "Apellido", "email@example.com", "contrasena123");
+		Usuario usuarioGuardado = usuarioDAO.guardar(usuarioOrigen);
+		
+		gasto2 = new Gasto("vino", 2000, categoriaGuardada, usuarioGuardado, (byte) 2);
+		Gasto gastoGuardado2 = gDAO.guardar(gasto2);
 
 		// Modifico atributos del gasto
-		/*gastoGuardado.setNombre("shampoo");
-		gastoGuardado.setMonto(1);
+		gastoGuardado2.setNombre("shampoo");
+		gastoGuardado2.setMonto(1);
 
 		// Llamada al metodo que actualiza
-		Gasto gastoActualizado = gDAO.actualizar(gastoGuardado);
+		Gasto gastoActualizado = gDAO.actualizar(gastoGuardado2);
 		// System.out.println(gastoActualizado.getNombre());
 
 		// testeo:
 		Assertions.assertNotNull(gastoActualizado);
 		Assertions.assertEquals("shampoo", gastoActualizado.getNombre());
-		Assertions.assertEquals(1, gastoActualizado.getMonto());*/
+		Assertions.assertEquals(1, gastoActualizado.getMonto());
 
+		System.out.println("Lista de gastos ");
+
+
+		for (Gasto gasto : gDAO.listar()) {
+			System.out.println("• " + gasto.getNombre());
+		}
+		
+
+		UsuarioDAOimpl uDAO = new UsuarioDAOimpl();
+		System.out.println("Lista de usuarios ");
+	    List<Usuario> ListaDeUsuariosGuardados = uDAO.listar();
+	        
+	    	for (Usuario user: ListaDeUsuariosGuardados) { 
+	    		System.out.println("• "+user.getNombreUsuario());
+	        }
 	}
 
 /*	@Test
@@ -123,23 +148,5 @@ public class GastoDAOimplServiceTest {
 		Assertions.assertNull(gastoBorrado);
 	}*/
 
-	@Test
-	public void testListarGrupo() {
-
-	    Gasto gastoGuardado = gDAO.guardar(gasto3); //si pongo aca el del actualizar anda!! lo lista, sino no...... 
-		List<Gasto> ListaDeGruposGuardados = gDAO.listar();
-
-		Assertions.assertFalse(ListaDeGruposGuardados.isEmpty()); 
-
-	//	Assertions.assertEquals(2, ListaDeGruposGuardados.size());
-
-		System.out.println("Lista de grupos ");
-
-
-		for (Gasto gasto : gDAO.listar()) {
-			System.out.println("• " + gasto.getNombre());
-		}
-
-	}
-
+	
 }
