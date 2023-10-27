@@ -35,8 +35,7 @@ public class UsuarioDAOimpl extends GenericDAOimpl<Usuario> implements UsuarioDA
 		
 		public List<Grupo> obtenerGruposDelUsuarioPorId(long usuarioId) {
 		    try {
-		    	System.out.println("CONSULTA");
-		    	System.out.println("CONSULTA");
+		    	
 
 		        EntityManager em = Factory.getEntityManagerFactory().createEntityManager();
 		        Usuario usuario = em.find(Usuario.class, usuarioId); // Buscar al usuario por su ID
