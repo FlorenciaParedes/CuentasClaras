@@ -1,5 +1,7 @@
 package DAOimplements;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
@@ -7,6 +9,8 @@ import javax.persistence.Query;
 
 import DAO.UsuarioDAO;
 import entidades.Usuario;
+import entidades.Grupo;
+
 import inicio.Factory;
 
 public class UsuarioDAOimpl extends GenericDAOimpl<Usuario> implements UsuarioDAO{
@@ -27,4 +31,24 @@ public class UsuarioDAOimpl extends GenericDAOimpl<Usuario> implements UsuarioDA
 				return null;
 			}
 		}
+		
+		
+		public List<Grupo> obtenerGruposDelUsuarioPorId(long usuarioId) {
+		    try {
+		    	System.out.println("CONSULTA");
+		    	System.out.println("CONSULTA");
+
+		        EntityManager em = Factory.getEntityManagerFactory().createEntityManager();
+		        Usuario usuario = em.find(Usuario.class, usuarioId); // Buscar al usuario por su ID
+		        List<Grupo> grupos = usuario.getGrupos(); // Obtener la lista de grupos del usuario
+		        em.close();
+		        return grupos;
+		    } catch (Exception e) {
+		    	System.out.println("EXCEPCION " + e);
+
+		        e.printStackTrace();
+		        return null; // Manejar cualquier excepción y devolver null si algo sale mal
+		    }
+		}
+		
 }

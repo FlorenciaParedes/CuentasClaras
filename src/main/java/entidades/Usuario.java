@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -39,10 +40,7 @@ public class Usuario {
     private String contrasena;
 	
 
-	/*@ManyToMany // si dejo esta linea se me rompe en consola
-	private List<Grupo> grupos = new ArrayList<>();
-	
-	*/
+
 	@ManyToMany
     @JoinTable(
         name = "amigos",
@@ -51,7 +49,7 @@ public class Usuario {
     )
     private List<Usuario> amigos= new ArrayList<>();
 	
-    @ManyToMany(mappedBy="integrantes")
+	@ManyToMany(mappedBy="integrantes", fetch = FetchType.EAGER)
     private List<Grupo> grupos= new ArrayList<>();
     
     @ManyToMany(mappedBy="integrantes")

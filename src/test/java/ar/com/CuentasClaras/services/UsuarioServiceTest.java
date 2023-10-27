@@ -25,10 +25,18 @@ public class UsuarioServiceTest {
 	
 	@Test
 	public void testRegistrarGrupo() {
+		System.out.println("TOI ACA");
 		Grupo grupo = usuario.registrarGrupo("Amigos",(byte)4);
 		Assertions.assertNotNull(grupo);
 		Assertions.assertEquals("Amigos", grupo.getNombre());
 		Assertions.assertTrue(usuario.getGrupos().contains(grupo));
+
+		List<Grupo> gruposDelUsuario = uDAO.obtenerGruposDelUsuarioPorId(usuario.getId());
+		Assertions.assertEquals("Amigos", gruposDelUsuario.get(0).getNombre());
+		
+		 for (Grupo grupoUsuario : gruposDelUsuario) {
+		        System.out.println("Nombre del Grupo: " + grupoUsuario.getNombre());
+		    }
 	}
 	
 
