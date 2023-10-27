@@ -25,7 +25,6 @@ public class UsuarioServiceTest {
 	
 	@Test
 	public void testRegistrarGrupo() {
-		System.out.println("TOI ACA");
 		Grupo grupo = usuario.registrarGrupo("Amigos",(byte)4);
 		Assertions.assertNotNull(grupo);
 		Assertions.assertEquals("Amigos", grupo.getNombre());
