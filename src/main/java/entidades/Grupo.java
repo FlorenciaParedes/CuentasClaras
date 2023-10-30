@@ -39,7 +39,14 @@ public class Grupo {
 		)	
 	private List<Usuario> integrantes =new ArrayList<>();
 	
-	 public Grupo( String nombre, byte imagen, Usuario PrimerUsuario) {
+	public Grupo( String nombre, byte imagen, CategoriaGrupo categoria, Usuario PrimerUsuario) {
+        this.nombre = nombre;
+        this.imagen = imagen;
+        this.categoria = categoria;
+        this.integrantes.add(PrimerUsuario);
+	}
+       
+	public Grupo( String nombre, byte imagen, Usuario PrimerUsuario) {
 	        this.nombre = nombre;
 	        this.imagen = imagen;
 	    	this.integrantes.add(PrimerUsuario);
@@ -52,6 +59,7 @@ public class Grupo {
         this.categoria = categoria;
     }
        
+	
 	
 	public long getId() {
 		return id;

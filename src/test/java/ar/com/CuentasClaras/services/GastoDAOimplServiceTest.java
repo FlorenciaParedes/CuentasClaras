@@ -57,13 +57,12 @@ public class GastoDAOimplServiceTest {
 	// El setUp se corre antes que los test e inicializa variables que voy a usar en
 	// los metodos test.
 	public void setUp() {
+
 	}
 
 	@Test
 	public void testGuardarGastoDAOimpl() {
 		// llamada al metodo que guarda
-		
-		
 
 		CategoriaGastoDAOimpl cgDAO = new CategoriaGastoDAOimpl();
 		CategoriaGasto categoriaGasto = new CategoriaGasto("comida", (byte) 2);
@@ -77,14 +76,14 @@ public class GastoDAOimplServiceTest {
 		gasto3 = new Gasto("yerba", 1500, categoriaGuardada, usuarioGuardado, (byte) 2);
 
 		Gasto gastoGuardado = gDAO.guardar(gasto1);
-		
-		Gasto gastoGuardado3= gDAO.guardar(gasto3);
+
+		Gasto gastoGuardado3 = gDAO.guardar(gasto3);
 
 		// testeo:
 		Assertions.assertNotNull(gastoGuardado, "No deberia ser null");
 		Assertions.assertEquals("dulce de leche", gastoGuardado.getNombre(), "No deberia ser null");
 		Assertions.assertEquals(1200, gastoGuardado.getMonto());
-		
+
 	}
 
 	@Test
@@ -97,7 +96,7 @@ public class GastoDAOimplServiceTest {
 		UsuarioDAOimpl usuarioDAO = new UsuarioDAOimpl();
 		Usuario usuarioOrigen = new Usuario("Cata", "Nombre", "Apellido", "email@example.com", "contrasena123");
 		Usuario usuarioGuardado = usuarioDAO.guardar(usuarioOrigen);
-		
+
 		gasto2 = new Gasto("vino", 2000, categoriaGuardada, usuarioGuardado, (byte) 2);
 		Gasto gastoGuardado2 = gDAO.guardar(gasto2);
 
@@ -116,37 +115,43 @@ public class GastoDAOimplServiceTest {
 
 		System.out.println("Lista de gastos ");
 
-
 		for (Gasto gasto : gDAO.listar()) {
 			System.out.println("• " + gasto.getNombre());
 		}
-		
 
 		UsuarioDAOimpl uDAO = new UsuarioDAOimpl();
 		System.out.println("Lista de usuarios ");
-	    List<Usuario> ListaDeUsuariosGuardados = uDAO.listar();
-	        
-	    	for (Usuario user: ListaDeUsuariosGuardados) { 
-	    		System.out.println("• "+user.getNombreUsuario());
-	        }
+		List<Usuario> ListaDeUsuariosGuardados = uDAO.listar();
+
+		for (Usuario user : ListaDeUsuariosGuardados) {
+			System.out.println("• " + user.getNombreUsuario());
+		}
 	}
 
-/*	@Test
+	@Test
 	public void testBorrar() {
+		// guardo el gasto.
+		CategoriaGastoDAOimpl cgDAO = new CategoriaGastoDAOimpl();
+		CategoriaGasto categoriaGasto = new CategoriaGasto("Amigos", (byte) 2);
+		CategoriaGasto categoriaGuardada = cgDAO.guardar(categoriaGasto);
 
-		Gasto gastoGuardado = gDAO.guardar(gasto3);
+		UsuarioDAOimpl usuarioDAO = new UsuarioDAOimpl();
+		Usuario usuarioOrigen = new Usuario("Ana", "Nombre", "Apellido", "email@example.com", "contrasena123");
+		Usuario usuarioGuardado = usuarioDAO.guardar(usuarioOrigen);
+
+		gasto3 = new Gasto("Cine", 2000, categoriaGuardada, usuarioGuardado, (byte) 2);
+		Gasto gastoGuardado3 = gDAO.guardar(gasto3);
+
 		// aseguro que existe
-		Assertions.assertNotNull(gastoGuardado);
+		Assertions.assertNotNull(gastoGuardado3);
 
 		// metodo para borrar el usuario
-		gDAO.borrar(gastoGuardado);
+		gDAO.borrar(gastoGuardado3);
 
 		// Busco al usuario por su email después de borrarlo
-		Gasto gastoBorrado = gDAO.buscarGastoPorNombre("yerba");
-
+		Gasto gastoBorrado = gDAO.buscarGastoPorNombre("Cine");
 		// Aseguro que no existe mas
 		Assertions.assertNull(gastoBorrado);
-	}*/
+	}
 
-	
 }
