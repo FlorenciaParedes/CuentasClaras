@@ -11,9 +11,7 @@ import DAOimplements.GastoDAOimpl;
 import DAOimplements.UsuarioDAOimpl;
 
 import entidades.CategoriaGasto;
-import entidades.CategoriaGrupo;
 import entidades.Gasto;
-import entidades.Grupo;
 import entidades.Usuario;
 
 public class GastoDAOimplServiceTest {
@@ -53,13 +51,6 @@ public class GastoDAOimplServiceTest {
 	private GastoDAOimpl gDAO = new GastoDAOimpl();
 	List<Gasto> ListaDeGastosGuardados = null;
 
-	@BeforeEach
-	// El setUp se corre antes que los test e inicializa variables que voy a usar en
-	// los metodos test.
-	public void setUp() {
-
-	}
-
 	@Test
 	public void testGuardarGastoDAOimpl() {
 		// llamada al metodo que guarda
@@ -77,7 +68,6 @@ public class GastoDAOimplServiceTest {
 
 		Gasto gastoGuardado = gDAO.guardar(gasto1);
 
-		Gasto gastoGuardado3 = gDAO.guardar(gasto3);
 
 		// testeo:
 		Assertions.assertNotNull(gastoGuardado, "No deberia ser null");
@@ -130,25 +120,43 @@ public class GastoDAOimplServiceTest {
 
 	@Test
 	public void testBorrar() {
-		// guardo el gasto.
+		//integrantes
+		Usuario usuario2 = new Usuario("juan", "Juan", "Pérez", "juan@example.com", "clave456");
+		Usuario usuario3 = new Usuario("maria", "Maria", "Gómez", "maria@example.com", "p@ssw0rd");
+		Usuario usuario4 = new Usuario("carlos", "Carlos", "López", "carlos@example.com", "c0ntraseña789");
+
+		// alta categoria
 		CategoriaGastoDAOimpl cgDAO = new CategoriaGastoDAOimpl();
 		CategoriaGasto categoriaGasto = new CategoriaGasto("Amigos", (byte) 2);
 		CategoriaGasto categoriaGuardada = cgDAO.guardar(categoriaGasto);
-
+		
+		// alta usuario
 		UsuarioDAOimpl usuarioDAO = new UsuarioDAOimpl();
 		Usuario usuarioOrigen = new Usuario("Ana", "Nombre", "Apellido", "email@example.com", "contrasena123");
 		Usuario usuarioGuardado = usuarioDAO.guardar(usuarioOrigen);
-
+		
+		//alta integrantes
+		Usuario usuarioGuardado2 = usuarioDAO.guardar(usuario2);
+		Usuario usuarioGuardado3 = usuarioDAO.guardar(usuario3);
+		Usuario usuarioGuardado4 = usuarioDAO.guardar(usuario4);
+		
+		//creo el gasto
 		gasto3 = new Gasto("Cine", 2000, categoriaGuardada, usuarioGuardado, (byte) 2);
+		
+		//enlazo integrantes
+		gasto3.agregarIntegrante(usuarioGuardado2);
+		gasto3.agregarIntegrante(usuarioGuardado3);
+		gasto3.agregarIntegrante(usuarioGuardado4);
+		
+		// alta gasto;
 		Gasto gastoGuardado3 = gDAO.guardar(gasto3);
 
 		// aseguro que existe
 		Assertions.assertNotNull(gastoGuardado3);
-
-		// metodo para borrar el usuario
+		// metodo para borrar
 		gDAO.borrar(gastoGuardado3);
 
-		// Busco al usuario por su email después de borrarlo
+		// Busco el gasto por su nombre
 		Gasto gastoBorrado = gDAO.buscarGastoPorNombre("Cine");
 		// Aseguro que no existe mas
 		Assertions.assertNull(gastoBorrado);

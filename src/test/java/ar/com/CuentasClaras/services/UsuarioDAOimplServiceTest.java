@@ -74,7 +74,7 @@ public class UsuarioDAOimplServiceTest {
 			uDAO.borrar(usuarioGuardado);
 			
 			// Busco al usuario por su email después de borrarlo
-			Usuario usuarioBorrado = uDAO.buscarUsuarioPorMail("ana.gonzalez@mail.com");
+			Usuario usuarioBorrado = uDAO.buscarUsuarioPorMail("ana@mail.com");
 			
 			// Aseguro que no existe mas
 			Assertions.assertNull(usuarioBorrado);

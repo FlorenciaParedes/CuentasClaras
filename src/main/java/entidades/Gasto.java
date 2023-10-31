@@ -162,4 +162,10 @@ public class Gasto {
 		// según la estrategia de división y el monto. 
 		// Relaciona los saldos calculados y los integrantes del gasto.
 	}
+
+	public void agregarIntegrante(Usuario usuario) {
+	    this.integrantes.add(usuario); // Agregar usuario al grupo
 	}
+}
+
+
